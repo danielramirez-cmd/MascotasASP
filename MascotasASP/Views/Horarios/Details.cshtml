@@ -1,0 +1,52 @@
+﻿@model MascotasASP.DTOs.HorariosDTO
+@{
+    ViewData["Title"] = "Detalles de los Horarios";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg rounded">
+        <div class="card-header bg-secondary text-white text-center py-3">
+            <h3 class="mb-0">@ViewData["Title"]</h3>
+        </div>
+
+        <div class=" card-body py-4">
+
+            <div class="row mt-4">
+
+                <div class="col-md-6">
+                    <dl class="row">
+
+                        <dt class="col-5 fw-bold">@Html.DisplayNameFor(Model => Model.Categoria)</dt>
+                        <dt class="col-7">@Html.DisplayFor(Model => Model.Categoria)</dt>
+
+
+                        <dt class="col-5 fw-bold">@Html.DisplayNameFor(Model => Model.HoraInicio)</dt>
+                        <dt class="col-7">@Html.DisplayFor(Model => Model.HoraInicio)</dt>
+
+                        <dt class="col-5 fw-bold">@Html.DisplayNameFor(Model => Model.HoraFin)</dt>
+                        <dt class="col-7">@Html.DisplayFor(Model => Model.HoraFin)</dt>
+
+                    </dl>
+                </div>
+
+
+
+                <div class="text-center mt-4">
+                    <a href="@Url.Action("Index", "Horarios")" class="btn btn-outline-secondary px-4 py-2">
+                        <i class="fas fa-arrow-left"></i> Volver a la lista
+                    </a>
+
+                    <a href="@Url.Action("Edit", "Horarios", new { id = Model.Id })" class="btn btn-secondary text-white px-4 py-2 ms-2">
+                        <i class="fas fa-edit"></i> Editar
+                    </a>
+
+                    <a href="@Url.Action("ConfirmDelete", "Horarios", new { id = Model.Id })" class="btn btn-danger px-4 py-2 ms-2">
+                        <i class="fas fa-trash-alt"></i> Eliminar
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

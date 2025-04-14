@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MascotasASP.DTOs.ReporteCreateDTO>
+@{
+    ViewData["Title"] = "Reporte Mascotas";
+    int num = 1;
+}
+
+<div class=" container mt-4">
+
+   
+
+    @*  @await Html.PartialAsync("_Alerts") *@
+
+    <div class=" table-responsive">
+        <table class="table table-striped table-hover table-bordered align-middle">
+            <thead class="table-dark">
+                @*  Encabezados  *@
+            <th>#</th>
+            <th>@Html.DisplayNameFor(m => m.NombreDueno)</th>
+            <th>@Html.DisplayNameFor(m => m.NombreMascota)</th>
+            <th>@Html.DisplayNameFor(m => m.HoraInicio)</th>
+            <th>@Html.DisplayNameFor(m => m.HoraFin)</th>
+            <th>@Html.DisplayNameFor(m => m.Especie)</th>
+            <th>@Html.DisplayNameFor(m => m.Paseador)</th>
+
+            </thead>
+
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@(num++)</td>
+                            <td>@item.NombreDueno</td>
+                            <td>@item.NombreMascota</td>
+                            <td>@item.HoraInicio</td>
+                            <td>@item.HoraFin</td>
+                            <td>@item.Especie</td>
+                            <td>@item.Paseador</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" class="text-center">No hay categorias disponibles</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

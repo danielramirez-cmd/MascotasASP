@@ -1,0 +1,47 @@
+﻿@model MascotasASP.DTOs.HorariosDTO
+@{
+    ViewData["Title"] = "Editar Horarios";
+}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg rounded">
+        <div class="card-header bg-secondary text-white text-center py-3">
+            <h3 class="mb-0">@ViewData["Title"]</h3>
+        </div>
+
+        <div class="card-body p-4">
+            @* @await Html.PartialAsync("_Alerts") *@
+
+            <form method="post" class="p-3" enctype="multipart/form-data">
+
+                <div class="mb-3">
+                    <label asp-for="Categoria" class="form-label fs-5 fw-semibold"></label>
+                    <input asp-for="Categoria" class="form-control form-control-lg" placeholder="ingrese metros" />
+                    <span asp-validation-for="Categoria" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="HoraInicio" class="form-label fs-5 fw-semibold"></label>
+                    <input asp-for="HoraInicio" type="time" class="form-control form-control-lg" placeholder="Seleccione la hora inicio" />
+                    <span asp-validation-for="HoraInicio" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="HoraFin" class="form-label fs-5 fw-semibold"></label>
+                    <input asp-for="HoraFin" type="time" class="form-control form-control-lg" placeholder="Seleccione la hora fin" />
+                    <span asp-validation-for="HoraFin" class="text-danger small"></span>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="@Url.Action("Index", "Metros")" class="btn btn-outline-secondary px-4 py-2">
+                        <i class="fas fa-arrow-left"></i> Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-success px-4 py-2 ms-2">
+                        <i class="fas fa-save"></i> Guardar cambios
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

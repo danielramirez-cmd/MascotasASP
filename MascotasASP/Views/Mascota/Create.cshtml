@@ -1,0 +1,71 @@
+﻿@model MascotasASP.DTOs.MascotaDTO
+@{
+    ViewData["Title"] = "Agregar nueva Mascota";
+
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg rounded">
+        <div class="card-header bg-secondary text-white text-center py-3">
+            <h3 class="mb-0">@ViewData["Title"]</h3>
+        </div>
+        <div class="card-body p-4">
+            @*   @await Html.PartialAsync("_Alerts") *@
+
+            <form method="post" class="p-3" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label asp-for="Nombre" class="form-label fs-5 fw-semibold"></label>
+                    <input asp-for="Nombre" type="text" class="form-control form-control-lg" placeholder="Ingrese nombre de la mascota" />
+                    <span asp-validation-for="Nombre" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Especie" class="form-label fs-5 fw-semibold"></label>
+                    <input asp-for="Especie" type="text" class="form-control form-control-lg" placeholder="Ingrese especie de la mascota" />
+                    <span asp-validation-for="Especie" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Raza" class="form-label fs-5 fw-semibold"></label>
+                    <input asp-for="Raza" type="text" class="form-control form-control-lg" placeholder="Ingrese raza de la mascota" />
+                    <span asp-validation-for="Raza" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Edad" class="form-label fs-5 fw-semibold"></label>
+                    <input asp-for="Edad" type="number" class="form-control form-control-lg" placeholder="Ingrese el titulo del libro" />
+                    <span asp-validation-for="Edad" class="text-danger small"></span>
+                </div>
+
+
+                <div class="mb-3">
+                    <label asp-for="Dueño" class="form-label fs-5 fw-semibold"></label>
+                    <select asp-for="DueñoId" asp-items="ViewBag.Duenos" class="form-select form-select-lg">
+                        <option value="">Seleccione nombre del dueño</option>
+                    </select>
+                    <span asp-validation-for="DueñoId" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Metros" class="form-label fs-5 fw-semibold"></label>
+                    <select asp-for="MetrosId" asp-items="ViewBag.Metros" class="form-select form-select-lg">
+                        <option value="">Seleccione metros</option>
+                    </select>
+                    <span asp-validation-for="MetrosId" class="text-danger small"></span>
+                </div>
+                
+
+                <div class="text-center mt-4">
+                    <a href="@Url.Action("Index", "Mascota")" class="btn btn-outline-secondary px-4 py-2">
+                        <i class="fas fa-arrow-left"></i> Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-success px-4 py-2 ms-2">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
