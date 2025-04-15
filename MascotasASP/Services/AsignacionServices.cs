@@ -46,6 +46,21 @@ namespace MascotasASP.Services
         }
         #endregion
 
+        #region "agregar"
+        public async Task AddAsignacion(AsignacionDTO asignacionDTO)
+        {
+            await _context.Database.ExecuteSqlInterpolatedAsync($@"
+            usp_InsertarAsignacion
+            @mascotaId = {asignacionDTO.mascotaId}, 
+            @Fecha = {asignacionDTO.Fecha},
+            @horarioId = {asignacionDTO.horarioId},
+            @Costo = {asignacionDTO.Costo},
+            @Paseador = {asignacionDTO.Paseador}");
+            await _context.SaveChangesAsync();
+        }
+
+        #endregion
+
         #region "Actualizar "
 
         public async Task UpdateAsignacion(AsignacionDTO asignacionDTO)

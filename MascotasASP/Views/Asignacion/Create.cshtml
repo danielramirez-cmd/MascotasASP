@@ -1,0 +1,63 @@
+﻿@model MascotasASP.DTOs.AsignacionDTO
+@{
+    ViewData["Title"] = "Agregar nueva Asignacion";
+
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg rounded">
+        <div class="card-header bg-secondary text-white text-center py-3">
+            <h3 class="mb-0">@ViewData["Title"]</h3>
+        </div>
+        <div class="card-body p-4">
+            @*   @await Html.PartialAsync("_Alerts") *@
+
+            <form method="post" class="p-3" enctype="multipart/form-data">
+
+                <div class="mb-3">
+                    <label for="mascotaId" class="form-label fs-5 fw-semibold">Nombre de la Mascota</label>
+                    <select asp-for="mascotaId" asp-items="ViewBag.Mascota" class="form-select form-select-lg">
+                        <option value="">Seleccione nombre de la mascota</option>
+                    </select>
+                    <span asp-validation-for="mascotaId" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Fecha" class="form-label fs-5 fw-semibold">Fecha de Asignación</label>
+                    <input asp-for="Fecha" type="date" class="form-control form-control-lg" placeholder="Ingrese fecha" />
+                    <span asp-validation-for="Fecha" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="horarioId" class="form-label fs-5 fw-semibold">Horario</label>
+                    <select asp-for="horarioId" asp-items="ViewBag.Horario" class="form-select form-select-lg">
+                        <option value="">Seleccione horarios</option>
+                    </select>
+                    <span asp-validation-for="horarioId" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Costo" class="form-label fs-5 fw-semibold">Costo</label>
+                    <input asp-for="Costo" type="number" class="form-control form-control-lg" placeholder="Ingrese costo" />
+                    <span asp-validation-for="Costo" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Paseador" class="form-label fs-5 fw-semibold">Paseador</label>
+                    <input asp-for="Paseador" type="text" class="form-control form-control-lg" placeholder="Ingrese paseador" />
+                    <span asp-validation-for="Paseador" class="text-danger small"></span>
+                </div>
+
+
+                <div class="text-center mt-4">
+                    <a href="@Url.Action("Index", "Mascota")" class="btn btn-outline-secondary px-4 py-2">
+                        <i class="fas fa-arrow-left"></i> Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-success px-4 py-2 ms-2">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

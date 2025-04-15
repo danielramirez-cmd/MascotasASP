@@ -29,6 +29,52 @@ namespace MascotasASP.Controllers
 
         #endregion
 
-    
+
+        #region "Crear"
+        public async Task<IActionResult> Create()
+        {
+
+            AsignacionDTO asignacionDTO = new AsignacionDTO();
+
+            var categoriasMascota = await _mascotas.GetallMascota();
+            ViewBag.Mascota = new SelectList(categoriasMascota, "Id", "Nombre");
+
+            var categoriaHorarios = await _horarios.GetallHorarios();
+            ViewBag.Horario = new SelectList(categoriaHorarios, "Id", "FechaInicio");
+
+            return View(asignacionDTO);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Create(AsignacionDTO asignacionDTO)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    await _asignacion.AddAsignacion(asignacionDTO);
+                    TempData["SuccessMessage"] = "Asignacion agregado exitosamente";
+                    return RedirectToAction("Index");
+                }
+            }
+
+            catch (Exception e)
+            {
+                TempData["ErrorMessage"] = $"Hubo un error al agregar la asignacion";
+            }
+
+            var categoriasMascota = await _mascotas.GetallMascota();
+            ViewBag.Mascota = new SelectList(categoriasMascota, "Id", "Nombre");
+
+            var categoriaHorarios = await _horarios.GetallHorarios();
+            ViewBag.Horario = new SelectList(categoriaHorarios, "Id", "FechaInicio");
+
+            return View(asignacionDTO);
+        }
+
+        #endregion
+
+
     } // fin controller
 } // fin namespace
