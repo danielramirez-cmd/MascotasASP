@@ -64,6 +64,11 @@ namespace MascotasASP.Controllers
             {
                 TempData["ErrorMessage"] = $"Hubo un error al agregar la Mascota";
             }
+            var categoriasDueño = await _dueño.GetallDueño();
+            ViewBag.Duenos = new SelectList(categoriasDueño, "Id", "Nombre");
+
+            var categoriaMetros = await _metroscuadrados.GetallMetros();
+            ViewBag.Metros = new SelectList(categoriaMetros, "Id", "Metros");
             return View(mascotaDTO);
         }
 

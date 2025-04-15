@@ -5,29 +5,23 @@ namespace MascotasASP.DTOs
 {
     public class AsignacionDTO
     {
-        public int Id { get; set; }
+         public int Id { get; set; }
 
-
-
-        [Display(Name = "NombreMascota")]
-        public string? NombreMascota { get; set; }
-        public int? MascotaId { get; set; } // clave foranea de la mascota
-
-        [Display(Name ="Fecha")]
+        [Display(Name = "Fecha")]
         [Required(ErrorMessage = "Fecha de Asignacion requerida")]
-        public DateTime Fecha { get; set; } // fecha de asignacion
-
-
-        [Display(Name = "Hora")]
-        public DateTime Hora { get; set; }
-        public int? HorarioId { get; set; }
+        public DateTime? Fecha { get; set; } // fecha de asignacion
 
         public decimal? Costo { get; set; }
 
-        public string ? Paseador { get; set; } // nombre del paseador 
+        [Display(Name = "Nombre")]
+        public string? Nombre { get; set; }
+        public int? mascotaId { get; set; } // clave foranea de la mascota
 
+        [Display(Name = "FechaInicio")]
+        public DateTime? FechaInicio { get; set; }
+        public int? horarioId { get; set; }
 
-
+        public string? Paseador { get; set; } // nombre del paseador 
 
     } // fin asignacion 
 } // fin namespace 

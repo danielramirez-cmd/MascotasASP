@@ -9,7 +9,7 @@ namespace MascotasASP.IServices
 
         Task<AsignacionDTO> GetByIdAsignacion(int id);
 
-        Task AddAsignacion(AsignacionDTO asignacionDTO);
+        
 
         Task UpdateAsignacion(AsignacionDTO asignacionDTO);
 
