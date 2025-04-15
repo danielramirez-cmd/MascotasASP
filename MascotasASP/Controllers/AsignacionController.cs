@@ -33,18 +33,17 @@ namespace MascotasASP.Controllers
         #region "Crear"
         public async Task<IActionResult> Create()
         {
-
             AsignacionDTO asignacionDTO = new AsignacionDTO();
 
+            // Obtener la lista de mascotas y horarios
             var categoriasMascota = await _mascotas.GetallMascota();
             ViewBag.Mascota = new SelectList(categoriasMascota, "Id", "Nombre");
 
             var categoriaHorarios = await _horarios.GetallHorarios();
-            ViewBag.Horario = new SelectList(categoriaHorarios, "Id", "FechaInicio");
+            ViewBag.Horario = new SelectList(categoriaHorarios, "Id", "HoraInicio"); // Asegúrate de que "HoraInicio" sea correcto
 
             return View(asignacionDTO);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> Create(AsignacionDTO asignacionDTO)
@@ -54,24 +53,26 @@ namespace MascotasASP.Controllers
                 if (ModelState.IsValid)
                 {
                     await _asignacion.AddAsignacion(asignacionDTO);
-                    TempData["SuccessMessage"] = "Asignacion agregado exitosamente";
+                    TempData["SuccessMessage"] = "Asignación agregada exitosamente";
                     return RedirectToAction("Index");
                 }
             }
-
             catch (Exception e)
             {
-                TempData["ErrorMessage"] = $"Hubo un error al agregar la asignacion";
+                TempData["ErrorMessage"] = "Hubo un error al agregar la Asignación";
             }
 
+            // Reasignar los datos de ViewBag en caso de error
             var categoriasMascota = await _mascotas.GetallMascota();
             ViewBag.Mascota = new SelectList(categoriasMascota, "Id", "Nombre");
 
-            var categoriaHorarios = await _horarios.GetallHorarios();
-            ViewBag.Horario = new SelectList(categoriaHorarios, "Id", "FechaInicio");
+            var categoriaHorario = await _horarios.GetallHorarios();
+            ViewBag.Horario = new SelectList(categoriaHorario, "Id", "HoraInicio"); // Asegúrate de que "HoraInicio" sea correcto
 
             return View(asignacionDTO);
         }
+
+
 
         #endregion
 
