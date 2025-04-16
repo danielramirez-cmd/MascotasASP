@@ -24,7 +24,7 @@ namespace MascotasASP.Services
         {
 
             var asignacion = await _context.Set<AsignacionDTO>()
-            .FromSqlRaw("usp_ObtenerAsignacion").ToListAsync();
+            .FromSqlRaw("usp_ObtenerAsignaciones").ToListAsync();
             return asignacion;
         }
 
