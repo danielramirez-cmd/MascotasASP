@@ -18,7 +18,7 @@ namespace MascotasASP.DTOs
         public int? mascotaId { get; set; } // clave foranea de la mascota
 
         [Display(Name = "FechaInicio")]
-        public DateTime? FechaInicio { get; set; }
+        public DateTime? HoraInicio { get; set; }
         public int? horarioId { get; set; }
 
         public string? Paseador { get; set; } // nombre del paseador 

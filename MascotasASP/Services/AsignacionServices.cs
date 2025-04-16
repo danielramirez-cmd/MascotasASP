@@ -72,7 +72,7 @@ namespace MascotasASP.Services
             @IdHorario = {asignacionDTO.horarioId},
             @Costo = {asignacionDTO.Costo},
             @Paseador = {asignacionDTO.Paseador},
-            @Horario = {asignacionDTO.FechaInicio},   
+            @Horario = {asignacionDTO.HoraInicio},   
             @NombreMascota = {asignacionDTO.Nombre}");
         }
         #endregion
